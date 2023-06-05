@@ -1,24 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+import { Routes, Route } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
+// importing pages
+import BasicAuth from "./pages/basicAuth";
+import SessionsAuth from "./pages/sessionsAuth";
+import TokenAuth from "./pages/tokenAuth";
+import Auth0 from "./pages/auth0";
+import OAuthProvider from "./provider/auth0Provider";
 
 function App() {
+  const navigate = useNavigate();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <OAuthProvider>
+      <div>
+        <button onClick={() => navigate("/")} style={{ margin: "5px" }}>
+          Basic
+        </button>
+        <button onClick={() => navigate("/sessions")} style={{ margin: "5px" }}>
+          Sessions
+        </button>
+        <button onClick={() => navigate("/tokens")} style={{ margin: "5px" }}>
+          Tokens
+        </button>
+        <button onClick={() => navigate("/oauth")} style={{ margin: "5px" }}>
+          OAuth
+        </button>
+        <Routes>
+          <Route path="/" element={<BasicAuth />} />
+          <Route path="/sessions" element={<SessionsAuth />} />
+          <Route path="/tokens" element={<TokenAuth />} />
+          <Route path="/oauth" element={<Auth0 />} />
+        </Routes>
+      </div>
+    </OAuthProvider>
   );
 }
 
