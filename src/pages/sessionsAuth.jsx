@@ -8,7 +8,7 @@ const SessionsAuth = () => {
     if (isAuthenticated) {
       console.log(user);
     }
-  }, [isAuthenticated]);
+  }, [isAuthenticated, user]);
 
   return <h1>Session Based Authentication:</h1>;
 };
