@@ -10,7 +10,7 @@ const Auth0 = () => {
     if (isAuthenticated) {
       console.log("user:", user);
     }
-  }, [isAuthenticated]);
+  }, [isAuthenticated, user]);
 
   useEffect(() => {
     const getToken = async () => {
