@@ -9,8 +9,8 @@ const OAuthProvider = ({ children }) => {
     //   useRefreshTokens={true}
     //   useRefreshTokensFallback={false}
       authorizationParams={{
-        redirect_uri: 'http://localhost:3000/oauth',
-        scope: "read:current_user update:current_user_metadata",
+        redirect_uri: 'http://localhost:3000/sessions',
+        scope: "read:current_user update:current_user_metadata openid profile email",
         audience: `https://dev-fi3coqcunydb5ouw.us.auth0.com/api/v2/`,
 
       }}

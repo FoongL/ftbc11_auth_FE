@@ -40,7 +40,7 @@ const BasicAuth = () => {
 
   return (
     <div>
-      <h1>Basic Authentication:</h1>
+      <h1>This is Basic Authentication:</h1>
       <form onSubmit={handleSubmit}>
         <input
           type="text"

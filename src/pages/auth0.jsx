@@ -6,11 +6,11 @@ const Auth0 = () => {
   const { loginWithRedirect, isAuthenticated, user, getAccessTokenSilently } =
     useAuth0();
 
-  //   useEffect(() => {
-  //     if (isAuthenticated) {
-  //       console.log("user:", user);
-  //     }
-  //   }, [isAuthenticated]);
+  useEffect(() => {
+    if (isAuthenticated) {
+      console.log("user:", user);
+    }
+  }, [isAuthenticated]);
 
   useEffect(() => {
     const getToken = async () => {
@@ -23,7 +23,6 @@ const Auth0 = () => {
           },
         });
         console.log("token:", token);
-
         localStorage.setItem("accessToken", token);
       } catch (err) {
         console.log(err);
