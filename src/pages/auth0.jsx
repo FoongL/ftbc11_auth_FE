@@ -13,12 +13,12 @@ const Auth0 = () => {
   }, [isAuthenticated, user]);
 
   useEffect(() => {
+    console.log('am i firing?')
     const getToken = async () => {
-      const domain = "dev-fi3coqcunydb5ouw.us.auth0.com";
       try {
         const token = await getAccessTokenSilently({
           authorizationParams: {
-            audience: `https://${domain}/api/v2/`,
+            audience: `https://ftbc-13-auth-sample.com`,
             scope: "read:current_user",
           },
         });
@@ -38,7 +38,7 @@ const Auth0 = () => {
   const testAuth = async () => {
     const token = localStorage.getItem("accessToken");
     const authToken = "Bearer " + token;
-    const data = await axios.get("http://localhost:8000/oAuthTest", {
+    const data = await axios.get("http://localhost:8080/users/auth0Test", {
       headers: {
         Authorization: authToken,
       },

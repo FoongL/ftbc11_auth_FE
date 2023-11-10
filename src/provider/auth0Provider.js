@@ -4,14 +4,12 @@ import { Auth0Provider } from "@auth0/auth0-react";
 const OAuthProvider = ({ children }) => {
   return (
     <Auth0Provider
-      domain="dev-fi3coqcunydb5ouw.us.auth0.com"
-      clientId="B3VLZ1rGpHmnehMlTp7sjaSNEILuqWSA"
-    //   useRefreshTokens={true}
-    //   useRefreshTokensFallback={false}
+      domain="dev-qi8ysaccyg7lpwmk.us.auth0.com"
+      clientId="zTvPhfZNtkffp9UmNR6PAA4yoDgG48S1"
       authorizationParams={{
-        redirect_uri: 'http://localhost:3000/sessions',
+        redirect_uri: 'http://localhost:3000/oauth',
         scope: "read:current_user update:current_user_metadata openid profile email",
-        audience: `https://dev-fi3coqcunydb5ouw.us.auth0.com/api/v2/`,
+        audience: `https://ftbc-13-auth-sample.com`,
 
       }}
     >

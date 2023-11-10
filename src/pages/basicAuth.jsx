@@ -9,7 +9,7 @@ const BasicAuth = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const data = await axios.post("http://localhost:8000/users/signin", {
+    const data = await axios.post("http://localhost:8080/users/basicSignIn", {
       email,
       password,
     });
@@ -30,7 +30,7 @@ const BasicAuth = () => {
   
   const testAuth =async()=>{
     const basicAuth = 'Basic ' + btoa(localStorage.getItem('email') + ':' + localStorage.getItem('password'));
-    const data = await axios.get('http://localhost:8000/test',{
+    const data = await axios.get('http://localhost:8080/users/basicTest',{
         headers:{
             Authorization: basicAuth
         }

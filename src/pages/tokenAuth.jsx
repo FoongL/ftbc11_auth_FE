@@ -8,26 +8,37 @@ const TokenAuth = () => {
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-    if (token) {
-      const test = async () => {
-        const tokenAuth = "Bearer " + localStorage.getItem("token");
-        const data = await axios.get("http://localhost:8000/users/jwtTest", {
-          headers: {
-            Authorization: tokenAuth,
-          },
-        });
-        if (data.data.success) {
-          setAuthenticated(true);
-        }
-      };
-      test();
+    try {
+      if (token) {
+        const test = async () => {
+          try {
+            const tokenAuth = "Bearer " + localStorage.getItem("token");
+            const data = await axios.get(
+              "http://localhost:8080/users/jwtTest",
+              {
+                headers: {
+                  Authorization: tokenAuth,
+                },
+              }
+            );
+            if (data.data.success) {
+              setAuthenticated(true);
+            }
+          } catch (err) {
+            localStorage.removeItem("token");
+          }
+        };
+        test();
+      }
+    } catch (err) {
+      localStorage.removeItem("token");
     }
   }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const data = await axios.post("http://localhost:8000/users/signin", {
+    const data = await axios.post("http://localhost:8080/users/jwtSignIn", {
       email,
       password,
     });
@@ -47,7 +58,8 @@ const TokenAuth = () => {
 
   const testAuth = async () => {
     const tokenAuth = "Bearer " + localStorage.getItem("token");
-    const data = await axios.get("http://localhost:8000/jwtTest", {
+    console.log(tokenAuth);
+    const data = await axios.get("http://localhost:8080/users/jwtTest", {
       headers: {
         Authorization: tokenAuth,
       },
